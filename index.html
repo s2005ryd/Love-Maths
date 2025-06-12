@@ -16,13 +16,13 @@
 </head>
 
 <body>
-    <!-- create  the empty higher level elements first.
+<!-- create  the empty higher level elements first.
 And then add content to them afterwards  because it keeps things neat -->
     <h1 class="heading">
         <img class="logo" src="assets/images/logo.png" alt="Logo"> Love Maths
 
     </h1> 
-    <!-- So that we have a total of four buttons. And then just change the color classes.
+<!-- So that we have a total of four buttons. And then just change the color classes.
 So our second button then will be  blue, our third one will be orange,
 and our fourth one is red. Then we need to  add the Font Awesome icon inside the buttons
 and you can get the reference for these  icons from the Font Awesome website.
@@ -31,16 +31,26 @@ base class, and then fa plus for a plus sign.  Again, we'll copy that and paste 
 And then just change the class for the different  signs, so minus... Then times, and finally divide.-->
     <div class="game-area">
         <div class="controls-area">
-            <button class="btn btn--big btn--green">              
+<!-- We're going to add a custom  attribute called data type.
+Now HTML allows us to add any attribute  we want. But if we do create our own
+attributes it should have the prefix of data to  differentiate it from the default attributes.
+Our new data attribute will hold the name  of the game that we're going to play.
+We're going to use the content  of this attribute both as a label
+and in the JavaScript for the game itself. So  let's add one to each button now.
+Starting with our addition button then, we're going to add data-type, equals and then addition in quotes.
+I'm just going to copy this, paste it into the next  button and I'm going to change that to subtract.
+For our third button, it will be multiply.
+And for our final button here, division.-->
+            <button data-type="addition" class="btn btn--big btn--green">              
                 <i class="fas fa-plus"></i>
             </button>
-            <button class="btn btn--big btn--blue">
+            <button data-type="subtract" class="btn btn--big btn--blue">
                 <i class="fas fa-minus"></i>
             </button>
-            <button class="btn btn--big btn--orange">
+            <button data-type="multiply" class="btn btn--big btn--orange">
                 <i class="fas fa-times"></i>
             </button>
-            <button class="btn btn--big btn--red">
+            <button data-type="division" class="btn btn--big btn--red">
                 <i class="fas fa-divide"></i>
             </button>
         </div>
@@ -65,7 +75,7 @@ I'm going to give it the class of answer message, and just a text of enter answe
         <span id="operand2">0</span>
         <span>=</span>
         <p class="answer-message">Enter Answer:</p>
-        <!--So we're nearly complete now all we need is an  input field so that our user can type in the answer, and a button.
+<!--So we're nearly complete now all we need is an  input field so that our user can type in the answer, and a button.
 So we'll create our input field in the question area I'm going to give it the ID of answer box.
 And the type of number so  that only numbers can be inputted into this input.
 And finally, underneath the  div we're going to supply a button
@@ -73,7 +83,7 @@ so that we can submit our answers. So again,  we'll use the button element. We'l
 base class of btn this time it's going to be btn  grey. And we'll give it the text of submit answer.-->
         <input id="answer-box" type="number">
     </div>
-        <button class="btn btn--grey">Submit Answer</button>
+        <button data-type="submit" class="btn btn--grey">Submit Answer</button>
     </div>
 
 
@@ -85,7 +95,7 @@ base class of btn this time it's going to be btn  grey. And we'll give it the te
     </div>
     
 
-    <!-- add our script connection to our javascript file inside the body,
+<!-- add our script connection to our javascript file inside the body,
 right above the closing body tag. This will ensure the javascript file is run last by the
 browser after the rest of the document has been rendered. This speeds up loading times and
 makes sure that the DOM elements we need to access actually exist when the file is run. -->
