@@ -21,13 +21,59 @@ And then add content to them afterwards  because it keeps things neat -->
     <h1 class="heading">
         <img class="logo" src="assets/images/logo.png" alt="Logo"> Love Maths
 
-    </h1>
-    
-
-
+    </h1> 
+    <!-- So that we have a total of four buttons. And then just change the color classes.
+So our second button then will be  blue, our third one will be orange,
+and our fourth one is red. Then we need to  add the Font Awesome icon inside the buttons
+and you can get the reference for these  icons from the Font Awesome website.
+So I'm going to use the i element and give it  that class of fas which is the Font Awesome
+base class, and then fa plus for a plus sign.  Again, we'll copy that and paste it three times.
+And then just change the class for the different  signs, so minus... Then times, and finally divide.-->
     <div class="game-area">
-
-
+        <div class="controls-area">
+            <button class="btn btn--big btn--green">              
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="btn btn--big btn--blue">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="btn btn--big btn--orange">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="btn btn--big btn--red">
+                <i class="fas fa-divide"></i>
+            </button>
+        </div>
+<!--let's check our wireframe and we see  that we now need a question area.
+So inside the question area we're going to display  our numbers, our operands, the sign or operator,
+and the equal sign in spans. Let's go  ahead and create our question area div,
+so div class = question area.
+And again, inside here we're  going to create four spans.
+So right now I'm just going to create them completely empty and then we'll add content to them in a minute.
+The first span then, will  be for our first number, our first operand.
+So we'll give that the ID of operand one, and  I'll put zero as some placeholder text here.
+The second span is going to  contain our sign or operator.
+So we'll give that the ID of operator  and I'll put the placeholder text of just an x.
+Then an ID of operand 2 for  our second number, and a placeholder of zero.
+And finally, the equals sign  which doesn't require an ID
+because we're not going to  reference that from JavaScript.
+I'm also going to create a paragraph here that  will only be visible on mobile, we'll style that with our CSS.
+I'm going to give it the class of answer message, and just a text of enter answer.-->
+    <div class="question-area">
+        <span id="operand1">0</span>
+        <span id="operator">x</span>
+        <span id="operand2">0</span>
+        <span>=</span>
+        <p class="answer-message">Enter Answer:</p>
+        <!--So we're nearly complete now all we need is an  input field so that our user can type in the answer, and a button.
+So we'll create our input field in the question area I'm going to give it the ID of answer box.
+And the type of number so  that only numbers can be inputted into this input.
+And finally, underneath the  div we're going to supply a button
+so that we can submit our answers. So again,  we'll use the button element. We'll give it the
+base class of btn this time it's going to be btn  grey. And we'll give it the text of submit answer.-->
+        <input id="answer-box" type="number">
+    </div>
+        <button class="btn btn--grey">Submit Answer</button>
     </div>
 
 
