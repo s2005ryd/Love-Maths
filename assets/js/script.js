@@ -66,6 +66,8 @@ function runGame(gameType) { // This function will start the game based on the t
         displayAdditionQuestion(num1, num2); // Calls the function to display an addition question
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2); // Calls the function to display a multiplication question
+    } else if (gameType === "subtract") {
+        displaySubtractQuestion(num1, num2); // Calls the function to display a subtraction question   
     } else { 
         alert(`unknown game type: ${gameType}`); // Alerts the user if the game type is unknown
         throw `Unknown game type: ${gameType}. Aborting!`; // Throws an error if the game type is not recognized
@@ -105,6 +107,8 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"]; // Returns the correct answer and the game type
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"]; // Returns the correct answer and the game type{
+    } else if (operator === "") {
+        return [operand1 - operand2, "subtract"]; // Returns the correct answer and the game type
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`; // Throws an error if the operator is not recognized
@@ -128,16 +132,22 @@ function incrementWrongAnswer() {
 
 }
 function displayAdditionQuestion(operand1, operand2) {
+    
     document.getElementById("operand1").textContent = operand1; // Displays the first operand
     document.getElementById("operand2").textContent = operand2; // Displays the second operand
     document.getElementById("operator").textContent = "+"; // Displays the operator
 }
 
-function displaySubtractQuestion() {
+function displaySubtractQuestion(operand1, operand2) {
+    
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;  // Displays the first operand
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;  // Displays the second operand
+    document.getElementById("operator").textContent = "-"; // Displays the operator
 
 }
 
 function displayMultiplyQuestion(operand1, operand2) {
+    
     document.getElementById("operand1").textContent = operand1; // Displays the first operand
     document.getElementById("operand2").textContent = operand2; // Displays the second operand
     document.getElementById("operator").textContent = "x"; // Displays the operator
