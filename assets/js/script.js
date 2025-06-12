@@ -27,15 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
             // This is the code that will run when the button is clicked.
             // The first thing that we want to do is check to see if the button that was clicked has a data type of 'submit'.
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked Submit!");
+                checkAnswer(); // Call the checkAnswer function when the submit button is clicked
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType); // Call the runGame function with the game type
                 // This will run the game with the type specified by the button clicked.
                 alert(`You clicked ${gameType}!`); //this will just do is tell the  user what button has been clicked.
             }
-        })
-
+        });
     }
 
 // The first thing is that we want an addition  game to start as soon as the page is loaded.
@@ -72,11 +71,39 @@ function runGame(gameType) { // This function will start the game based on the t
 
 }
 
+    /** This checks the answer against the first element in the returned calculateCorrectAnswer array */
 function checkAnswer() {
 
-}
+    let userAnswer = parseInt(document.getElementById("answer-box").value); // Gets the user's answer from the input box
+    let calculatedAnswer = calculateCorrectAnswer(); // Calls the function to calculate the correct answer
+    let isCorrect = userAnswer === calculatedAnswer[0]; // Compares the user's answer to the calculated answer
 
+    if (isCorrect) {
+        alert("Hey! You got it right! :D"); // Alerts the user if the answer is correct
+     } else {
+        alert(`Awww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`); // Alerts the user if the answer is incorrect
+        }
+
+        runGame(calculatedAnswer[1]); // Calls the runGame function with the game type from the calculated answer
+
+}
+    /** Get's the opernds (the numbers) and the operator (plus, minus etc)
+     * directly from the DOM
+     * and checks if the answer is correct.
+     */
 function calculateCorrectAnswer() {
+    // This function retrieves the operands and operator from the DOM
+    // and calculates the correct answer based on the operator.
+    let operand1 = parseInt(document.getElementById("operand1").innerText); // Gets the first operand from the DOM
+    let operand2 = parseInt(document.getElementById("operand2").innerText); // Gets the second operand from the DOM
+    let operator = document.getElementById("operator").innerText; // Gets the operator from the DOM
+
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"]; // Returns the correct answer and the game type
+    } else {
+        alert(`Unimplemented operator ${operator}`);
+        throw `Unimplemented operator ${operator}. Aborting!`; // Throws an error if the operator is not recognized
+    }
 
 }
 
@@ -87,13 +114,10 @@ function incrementScore() {
 function incrementWrongAnswer() {
 
 }
-
 function displayAdditionQuestion(operand1, operand2) {
     document.getElementById("operand1").textContent = operand1; // Displays the first operand
     document.getElementById("operand2").textContent = operand2; // Displays the second operand
     document.getElementById("operator").textContent = "+"; // Displays the operator
-} {
-
 }
 
 function displaySubtractQuestion() {
