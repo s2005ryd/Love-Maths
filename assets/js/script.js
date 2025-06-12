@@ -30,16 +30,45 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("You clicked Submit!");
             } else {
                 let gameType = this.getAttribute("data-type");
+                runGame(gameType); // Call the runGame function with the game type
+                // This will run the game with the type specified by the button clicked.
                 alert(`You clicked ${gameType}!`); //this will just do is tell the  user what button has been clicked.
             }
         })
 
     }
 
+// The first thing is that we want an addition  game to start as soon as the page is loaded.
+//It's going to be our default game. So we need to  add that to our dom content loaded event listener.
+//So inside that event listener  but outside of the for loop,
+//we're going to run game and the  game type is going to be addition.
+//What we also need to do now, is in our button  event listeners instead of displaying
+//an alert when the user clicks on the button we  want it to actually call the run game function.
+    runGame("addition");
+    // This will start the addition game when the page loads.
 
 })
 
-function runGame() {
+/** 
+ * Docstrings are used to describe functions, they should go right above where the function name is declared. 
+ * The main game 'loop' called when the script is first loaded
+ * and after the user's answer has been processed
+ * if you call this function somewhere else in the file,
+and as you can see when I hover over this call to the function, my function description appears in the pop-up.
+A regular comment won’t do this.
+This is why docstrings for JavaScript functions are so useful, as you can get a quick reminder
+about what a function does without having to find where it was actually defined within the file.
+*/
+function runGame(gameType) { // This function will start the game based on the type passed in. 
+    let num1 = Math.floor(Math.random() * 25) + 1; // Generates a random number between 1 and 25
+    let num2 = Math.floor(Math.random() * 25) + 1; // Generates a random number between 1 and 25
+
+    if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2); // Calls the function to display an addition question
+    } else { 
+        alert("unknown game type: ${gameType}"); // Alerts the user if the game type is unknown
+        throw "Unknown game type: ${gameType}. Aborting!"; // Throws an error if the game type is not recognized
+    }
 
 }
 
@@ -59,7 +88,11 @@ function incrementWrongAnswer() {
 
 }
 
-function displayAdditionQuestion() {
+function displayAdditionQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1; // Displays the first operand
+    document.getElementById("operand2").textContent = operand2; // Displays the second operand
+    document.getElementById("operator").textContent = "+"; // Displays the operator
+} {
 
 }
 
