@@ -37,6 +37,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer(); // Call the checkAnswer function when the enter key is pressed
+        // This is the code that will run when a key is pressed in the answer box.
+        // The first thing that we want to do is check to see if the key that was pressed was the enter key.
+        if (event.key === "Enter") {
+            checkAnswer(); // Call the checkAnswer function when the enter key is pressed
+        }
+    }
+
 // The first thing is that we want an addition  game to start as soon as the page is loaded.
 //It's going to be our default game. So we need to  add that to our dom content loaded event listener.
 //So inside that event listener  but outside of the for loop,
@@ -59,6 +69,9 @@ This is why docstrings for JavaScript functions are so useful, as you can get a 
 about what a function does without having to find where it was actually defined within the file.
 */
 function runGame(gameType) { // This function will start the game based on the type passed in. 
+
+    document.getElementById("answer-box").value = ""; // Clears the answer box and sets the value to an empty string
+    document.getElementById("answer-box").focus(); // Sets the focus to the answer box so the user can start typing immediately
     let num1 = Math.floor(Math.random() * 25) + 1; // Generates a random number between 1 and 25
     let num2 = Math.floor(Math.random() * 25) + 1; // Generates a random number between 1 and 25
 
