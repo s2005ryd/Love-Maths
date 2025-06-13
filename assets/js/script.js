@@ -107,7 +107,7 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"]; // Returns the correct answer and the game type
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"]; // Returns the correct answer and the game type{
-    } else if (operator === "") {
+    } else if (operator === "-") {
         return [operand1 - operand2, "subtract"]; // Returns the correct answer and the game type
     } else {
         alert(`Unimplemented operator ${operator}`);
