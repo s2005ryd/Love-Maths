@@ -38,14 +38,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     document.getElementById("answer-box").addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-            checkAnswer(); // Call the checkAnswer function when the enter key is pressed
         // This is the code that will run when a key is pressed in the answer box.
         // The first thing that we want to do is check to see if the key that was pressed was the enter key.
         if (event.key === "Enter") {
             checkAnswer(); // Call the checkAnswer function when the enter key is pressed
         }
-    }
+    });
 
 // The first thing is that we want an addition  game to start as soon as the page is loaded.
 //It's going to be our default game. So we need to  add that to our dom content loaded event listener.
@@ -81,7 +79,10 @@ function runGame(gameType) { // This function will start the game based on the t
         displayMultiplyQuestion(num1, num2); // Calls the function to display a multiplication question
     } else if (gameType === "subtract") {
         displaySubtractQuestion(num1, num2); // Calls the function to display a subtraction question   
-    } else { 
+    } else if (gameType === "division") {
+        displayDivisionQuestion(num1, num2); // Calls the function to display a division question
+    } else {
+        // If the game type is not recognized, alert the user and throw an error
         alert(`unknown game type: ${gameType}`); // Alerts the user if the game type is unknown
         throw `Unknown game type: ${gameType}. Aborting!`; // Throws an error if the game type is not recognized
     }
@@ -122,6 +123,8 @@ function calculateCorrectAnswer() {
         return [operand1 * operand2, "multiply"]; // Returns the correct answer and the game type{
     } else if (operator === "-") {
         return [operand1 - operand2, "subtract"]; // Returns the correct answer and the game type
+    } else if (operator ==="/") {
+		return [operand1 / operand2, "division"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`; // Throws an error if the operator is not recognized
@@ -167,3 +170,10 @@ function displayMultiplyQuestion(operand1, operand2) {
 
 }
 
+// Add your division question here
+function displayDivisionQuestion(operand1, operand2) {
+    operand1 = operand1 * operand2;
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "/";
+}
